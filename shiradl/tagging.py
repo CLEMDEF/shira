@@ -5,7 +5,11 @@ import os
 from io import BytesIO
 from pathlib import Path
 from statistics import mean, stdev
-from typing import NotRequired, TypedDict
+import sys
+if sys.version_info < (3, 10):
+	from typing_extensions import NotRequired, TypedDict
+else:
+	from typing import NotRequired, TypedDict
 
 from dateutil import parser
 from mediafile import Image as MFImage

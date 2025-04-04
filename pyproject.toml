@@ -10,7 +10,8 @@ dependencies = [
 	"mediafile",
 	"pillow",
 	"requests_cache",
-	"python-dateutil"
+	"python-dateutil",
+	"typing-extensions";python_version < "3.11",
 ]
 readme = "README.md"
 dynamic = ["version"]
