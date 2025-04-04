@@ -33,8 +33,6 @@ def test_download_url(url, temp_download_dir):
     ]
     result = subprocess.run(command, capture_output=True, text=True)
     
-    print(result.stdout);
-    print(result.stderr);
 
     # Check if the command completed successfully
     assert result.returncode == 0, f"Command failed with error: {result.stderr}"
