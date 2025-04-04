@@ -28,7 +28,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install pytest
-        pip install shiradl
+        pip install git+https://github.com/KraXen72/shira
     - name: Create test config
       uses: "DamianReeves/write-file-action@master"
       with:
