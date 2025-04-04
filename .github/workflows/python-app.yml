@@ -20,6 +20,12 @@ jobs:
     name: Python ${{ matrix.python-version }} - ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v4
+    - name: Set up ffmpeg
+      uses: FedericoCarboni/setup-ffmpeg@v3
+      id: setup-ffmpeg
+      with:
+        ffmpeg-version: release
+        github-token: ${{ github.server_url == 'https://github.com' && github.token || '' }}
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
       with:
