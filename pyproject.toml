@@ -5,7 +5,8 @@ requires-python = ">=3.8"
 authors =  [{ name = "KraXen72" }, { name = "glomatico" }]
 dependencies = [
 	"click",
-	"yt-dlp >= 2025.03.27",
+	"yt-dlp >= 2025.03.27;python_version >= '3.8'",
+	"yt-dlp >= 2023.11.16;python_version < '3.8'",
 	"ytmusicapi >= 1.10.2",
 	"mediafile",
 	"pillow",
