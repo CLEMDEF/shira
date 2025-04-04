@@ -1,32 +1,35 @@
 # This workflow will install Python dependencies, run tests and lint with a single version of Python
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
 
-name: Python application
+name: Pytest
 
 on:
-  push:
-    branches: [ "master", "tests" ]
-  pull_request:
-    branches: [ "master" ]
+  - push
+  - pull_request
 
 permissions:
   contents: read
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        python-version: [ '3.x' ]
+        os: [ 'ubuntu-latest', 'windows-latest', 'macos-latest' ]
+    runs-on: ${{ matrix.os }}
+    name: Python ${{ matrix.python-version }} - ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python 3.11
       uses: actions/setup-python@v3
       with:
-        python-version: "3.11"
+        python-version: matrix.python-version
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install pytest
     - name: Test with pytest
       run: |
+        touch tests/test_config.json
+        cat << "{ 'final_path': 'tests/downloads', 'temp_path': 'tests/temp' }" > tests/test_config.json
         pytest
