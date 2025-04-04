@@ -36,8 +36,8 @@ jobs:
         path: ./tests/test_config.json
         contents: |
           {
-            "final_path": "tests/downloads", 
-            "temp_path": "tests/temp"
+            "final_path": "./tests/downloads", 
+            "temp_path": "./tests/temp"
           }
     - name: Run tests
       run: |
